@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import './Dashboard.css'
+import './Dashboard.css' ;
+import { BsSearch } from 'react-icons/bs';
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 export const Dashboard = () => {
 
@@ -22,18 +25,27 @@ export const Dashboard = () => {
         <div id="body">
             <div>
                 <h1>
-                    GEEKTRUST ADMIN Dashboard
+                    GEEKTRUST Admin Dashboard
                 </h1>
             </div>
 
-            <div>
-                <input type="text" placeholder="Search" id="search"/>
+
+            <div id="input_search">
+                <div>
+                    <input type="text" placeholder="Search" id="search"/>
+                </div>
+                
+                <div>
+                    <BsSearch id="search_icon"/>
+                </div>
             </div>
+
+
             <div>
                 <table>
                     <tbody>
                         <tr>
-                            <th>Sr. No</th>
+                            <th> Sr. No</th>
                             <th> Name </th>
                             <th> Email </th>
                             <th> Role </th>
@@ -49,8 +61,8 @@ export const Dashboard = () => {
                                 <td>{e.email}</td>
                                 <td>{e.role}</td>
                                 <td>
-                                    <span></span>
-                                    <span>Delete</span>
+                                    <span className="action_alignment"> <FaEdit /> </span>
+                                    <span className="action_alignment"> <MdDelete size={20}/> </span>
                                 </td>
                                 <td><input type="checkbox" value="checked" /></td>
                             </tr>
