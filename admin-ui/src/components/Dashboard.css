@@ -1,0 +1,26 @@
+body {
+    background-color: #13253a;
+    color: #04d2af;
+}
+
+#box > div:nth-child(1) {
+    text-align: center;
+}
+
+#search {
+    width: 50%;
+    height: 30px;
+    border-radius: 8px;
+    margin: 2% 0 0 3%;
+    font-size: 16px;
+}
+
+table {
+    background-color: white;
+    margin: 1.5% 0 0 3.3%;
+}
+
+td, th {
+    padding: 10px 50px;
+    border: 2px solid #dddddd; ;
+}
