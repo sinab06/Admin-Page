@@ -47,4 +47,9 @@ th {
 
 .action_alignment {
     margin-left: 10px;
+    cursor: pointer;
+}
+
+.task-done {
+    background-color: red;
 }
