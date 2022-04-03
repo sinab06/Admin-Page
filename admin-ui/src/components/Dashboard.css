@@ -50,6 +50,6 @@ th {
     cursor: pointer;
 }
 
-.task-done {
-    background-color: red;
+.checked {
+    background-color: gray;
 }

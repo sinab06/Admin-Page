@@ -8,7 +8,7 @@ export const Dashboard = () => {
 
     const url = "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
     const [user, setUser] = useState([]);
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState([]);
 
     function getData() {
         fetch(url).then((data) => {
@@ -25,14 +25,20 @@ export const Dashboard = () => {
     // console.log(user) ;
 
     function handleDelete(id) {
-        const newData = user.filter(user => user.id !== id);
+        const newData = user.filter(user => user.id !== id); //(!isChecked.includes(user.id))
         setUser(newData)
     }
 
-    const handleCheckbox = (e) => {
-        setIsChecked(true);
+    const handleCheckbox = (id) => {
+        console.log(isChecked)
+        if(isChecked.includes(id)){
+            const filteredArray = isChecked.filter(eId => eId !== id)
+            setIsChecked(filteredArray)
+          } else {
+            setIsChecked([...isChecked, id])
+          }
+        
     }
-
 
     return (
             <div id="body">
@@ -68,7 +74,7 @@ export const Dashboard = () => {
 
                             {
                                 user.map((e) =>
-                                    <tr>
+                                    <tr key={e.id} className={isChecked.includes(e.id) ? "checked" : "unchecked"}>
                                         <td>#919{e.id}</td>
                                         <td>{e.name}</td>
                                         <td>{e.email}</td>
@@ -77,7 +83,7 @@ export const Dashboard = () => {
                                             <span className="action_alignment"> <FaEdit /> </span>
                                             <span className="action_alignment" onClick={() => handleDelete(e.id)}> <MdDelete size={20} /> </span>
                                         </td>
-                                        <td><input className={ isChecked ? 'task-done' : ''} type="checkbox" value="checked" onChange={handleCheckbox}/></td>
+                                        <td><input type="checkbox" value="checked" onChange={() => handleCheckbox(e.id)}/></td>
                                     </tr>
                                 )
                             }
