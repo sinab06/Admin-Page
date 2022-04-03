@@ -27,7 +27,7 @@ export const Pagination = ({ users, setCurrentUsers }) => {
     useEffect(() => {
         const currentUsers = users.slice(indexOfFirstItem, indexOfLastItem);
         setCurrentUsers(currentUsers);
-    })
+    }, [currentPage, users])
 
 
     return (
@@ -36,12 +36,13 @@ export const Pagination = ({ users, setCurrentUsers }) => {
 
             <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(currentPage - 1)}> Prev </span>
 
-            {pageNumbers.map(pageNumber => (<span style={currentPage === pageNumber ? { padding: '10px', backgroundColor: 'yellow', color: 'black' } : { padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(pageNumber)}>{pageNumber}</span>))}
+            {pageNumbers.map(pageNumber => (<span key={pageNumber} style={currentPage === pageNumber ? { padding: '10px', backgroundColor: 'yellow', color: 'black' } : { padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(pageNumber)}>{pageNumber}</span>))}
 
             <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(currentPage + 1)}> Next </span>
 
             <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(pageNumbers[pageNumbers.length - 1])}> Last </span>
 
+            <span> <button>Delete </button> </span>
         </div>
     )
 }

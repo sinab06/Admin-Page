@@ -12,12 +12,15 @@ export const Dashboard = () => {
     const [user, setUser] = useState([]);
     const [isChecked, setIsChecked] = useState([]);
     const [currentUsers, setCurrentUsers] = useState([]);
+    const [searchedUsers, setSearchedUsers] = useState([]) ;
+    const [searchStr, setSearchStr] = useState("") ;
 
     function getData() {
         fetch(url).then((data) => {
             data.json().then((res) => {
                 //  console.log(res) ;
                 setUser(res);
+                setSearchedUsers(res) ;
             })
         })
     }
@@ -30,16 +33,31 @@ export const Dashboard = () => {
     function handleDelete(id) {
         const newData = user.filter(user => user.id !== id); //(!isChecked.includes(user.id))
         setUser(newData)
+
+        const filter = filterSearch(searchStr) ;
+        setSearchedUsers(filter);
     }
 
     const handleCheckbox = (id) => {
-        console.log(isChecked)
+        // console.log(isChecked)
         if (isChecked.includes(id)) {
             const filteredArray = isChecked.filter(eId => eId !== id)
             setIsChecked(filteredArray)
         } else {
             setIsChecked([...isChecked, id])
         }
+    }
+
+    const filterSearch = (search_str) => {
+        return  user.filter(u => (u.email.includes(search_str) || u.name.includes(search_str) || u.role.includes(search_str)))
+    }
+
+    const handleSearchUsers = (e) => {
+        const search_str = e.target.value ;
+        setSearchStr(search_str) ;
+
+        const filter = filterSearch(search_str) ;
+        setSearchedUsers(filter);
     }
 
     return (
@@ -53,7 +71,7 @@ export const Dashboard = () => {
 
             <div id="input_search">
                 <div>
-                    <input type="text" placeholder="Search" id="search" />
+                    <input type="text" placeholder="Search" id="search" onChange={handleSearchUsers}/>
                 </div>
 
                 <div>
@@ -94,7 +112,7 @@ export const Dashboard = () => {
             </div>
 
             <div id="pagination">
-                <Pagination users={user} setCurrentUsers={setCurrentUsers} />
+                <Pagination users={searchedUsers} setCurrentUsers={setCurrentUsers}  />
             </div>
         </div>
     )
