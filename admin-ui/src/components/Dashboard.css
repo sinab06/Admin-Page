@@ -51,9 +51,9 @@ th {
 }
 
 .checked {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(230, 227, 227);
 }
 
 #pagination {
-    margin: 1% 0;
+    margin: 1.5% 0;
 }

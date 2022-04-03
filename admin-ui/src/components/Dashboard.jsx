@@ -38,6 +38,14 @@ export const Dashboard = () => {
         setSearchedUsers(filter);
     }
 
+    const handleMultipleDelete = (id) => {
+        const newData = user.filter(!isChecked.includes(user.id)); 
+        setUser(newData)
+
+        const filter = filterSearch(searchStr) ;
+        setSearchedUsers(filter);
+    }
+
     const handleCheckbox = (id) => {
         // console.log(isChecked)
         if (isChecked.includes(id)) {
@@ -112,7 +120,7 @@ export const Dashboard = () => {
             </div>
 
             <div id="pagination">
-                <Pagination users={searchedUsers} setCurrentUsers={setCurrentUsers}  />
+                <Pagination users={searchedUsers} setCurrentUsers={setCurrentUsers} handleMultipleDelete={handleMultipleDelete}  />
             </div>
         </div>
     )

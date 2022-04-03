@@ -1,0 +1,17 @@
+/* style={{padding: '10px', backgroundColor: 'white', color: 'blue'}} */
+
+.active {
+    padding: 10px;
+    background-color: #04d2af;
+    color: #13253a ;
+    cursor: pointer;
+}
+
+.inactive { 
+    padding: 10px;
+    background-color: white;
+    color: #13253a ; 
+    cursor: pointer;
+}
+
+

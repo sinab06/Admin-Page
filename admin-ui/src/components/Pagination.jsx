@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./Pagnation.css"
+import "./Pagnation.css" ;
+import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineDoubleLeft } from 'react-icons/ai';
+import { AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineDoubleRight } from 'react-icons/ai';
 
-export const Pagination = ({ users, setCurrentUsers }) => {
+export const Pagination = ({ users, setCurrentUsers, handleMultipleDelete }) => {
 
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage] = useState(10)
@@ -32,17 +36,17 @@ export const Pagination = ({ users, setCurrentUsers }) => {
 
     return (
         <div>
-            <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(1)}> First </span>
+            <span className="inactive" onClick={() => setPage(1)}> <AiOutlineDoubleLeft /> </span>
 
-            <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(currentPage - 1)}> Prev </span>
+            <span className="inactive" onClick={() => setPage(currentPage - 1)}> <AiOutlineLeft /> </span>
 
-            {pageNumbers.map(pageNumber => (<span key={pageNumber} style={currentPage === pageNumber ? { padding: '10px', backgroundColor: 'yellow', color: 'black' } : { padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(pageNumber)}>{pageNumber}</span>))}
+            {pageNumbers.map(pageNumber => (<span key={pageNumber} className={currentPage === pageNumber ? "active" : "inactive"} onClick={() => setPage(pageNumber)}>{pageNumber}</span>))}
 
-            <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(currentPage + 1)}> Next </span>
+            <span className="inactive" onClick={() => setPage(currentPage + 1)}> <AiOutlineRight/> </span>
 
-            <span style={{ padding: '10px', backgroundColor: 'white', color: 'blue' }} onClick={() => setPage(pageNumbers[pageNumbers.length - 1])}> Last </span>
+            <span className="inactive" onClick={() => setPage(pageNumbers[pageNumbers.length - 1])}> <AiOutlineDoubleRight /> </span>
 
-            <span> <button>Delete </button> </span>
+            <span> <button onClick={handleMultipleDelete}> Delete </button> </span>
         </div>
     )
 }
