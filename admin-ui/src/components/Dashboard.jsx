@@ -25,7 +25,6 @@ export const Dashboard = () => {
         })
     }
 
-
     useEffect(() => {
         getData()
         document.title = "Admin Dashboard";
