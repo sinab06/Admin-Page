@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Pagnation.css" ;
+import "./Pagnation.css";
 import { AiOutlineLeft } from 'react-icons/ai';
 import { AiOutlineDoubleLeft } from 'react-icons/ai';
 import { AiOutlineRight } from 'react-icons/ai';
@@ -42,7 +42,7 @@ export const Pagination = ({ users, setCurrentUsers, handleMultipleDelete }) => 
 
             {pageNumbers.map(pageNumber => (<span key={pageNumber} className={currentPage === pageNumber ? "active" : "inactive"} onClick={() => setPage(pageNumber)}>{pageNumber}</span>))}
 
-            <span className="inactive" onClick={() => setPage(currentPage + 1)}> <AiOutlineRight/> </span>
+            <span className="inactive" onClick={() => setPage(currentPage + 1)}> <AiOutlineRight /> </span>
 
             <span className="inactive" onClick={() => setPage(pageNumbers[pageNumbers.length - 1])}> <AiOutlineDoubleRight /> </span>
 

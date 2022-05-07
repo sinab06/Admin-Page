@@ -12,15 +12,15 @@ export const Dashboard = () => {
     const [user, setUser] = useState([]);
     const [isChecked, setIsChecked] = useState([]);
     const [currentUsers, setCurrentUsers] = useState([]);
-    const [searchedUsers, setSearchedUsers] = useState([]) ;
-    const [searchStr, setSearchStr] = useState("") ;
+    const [searchedUsers, setSearchedUsers] = useState([]);
+    const [searchStr, setSearchStr] = useState("");
 
     function getData() {
         fetch(url).then((data) => {
             data.json().then((res) => {
                 //  console.log(res) ;
                 setUser(res);
-                setSearchedUsers(res) ;
+                setSearchedUsers(res);
             })
         })
     }
@@ -34,15 +34,15 @@ export const Dashboard = () => {
         const newData = user.filter(user => user.id !== id); //(!isChecked.includes(user.id))
         setUser(newData)
 
-        const filter = filterSearch(searchStr) ;
+        const filter = filterSearch(searchStr);
         setSearchedUsers(filter);
     }
 
     const handleMultipleDelete = (id) => {
-        const newData = user.filter(!isChecked.includes(user.id)); 
+        const newData = user.filter(!isChecked.includes(user.id));
         setUser(newData)
 
-        const filter = filterSearch(searchStr) ;
+        const filter = filterSearch(searchStr);
         setSearchedUsers(filter);
     }
 
@@ -57,14 +57,14 @@ export const Dashboard = () => {
     }
 
     const filterSearch = (search_str) => {
-        return  user.filter(u => (u.email.includes(search_str) || u.name.includes(search_str) || u.role.includes(search_str)))
+        return user.filter(u => (u.email.includes(search_str) || u.name.includes(search_str) || u.role.includes(search_str)))
     }
 
     const handleSearchUsers = (e) => {
-        const search_str = e.target.value ;
-        setSearchStr(search_str) ;
+        const search_str = e.target.value;
+        setSearchStr(search_str);
 
-        const filter = filterSearch(search_str) ;
+        const filter = filterSearch(search_str);
         setSearchedUsers(filter);
     }
 
@@ -79,7 +79,7 @@ export const Dashboard = () => {
 
             <div id="input_search">
                 <div>
-                    <input type="text" placeholder="Search" id="search" onChange={handleSearchUsers}/>
+                    <input type="text" placeholder="Search" id="search" onChange={handleSearchUsers} />
                 </div>
 
                 <div>
@@ -120,7 +120,7 @@ export const Dashboard = () => {
             </div>
 
             <div id="pagination">
-                <Pagination users={searchedUsers} setCurrentUsers={setCurrentUsers} handleMultipleDelete={handleMultipleDelete}  />
+                <Pagination users={searchedUsers} setCurrentUsers={setCurrentUsers} handleMultipleDelete={handleMultipleDelete} />
             </div>
         </div>
     )
