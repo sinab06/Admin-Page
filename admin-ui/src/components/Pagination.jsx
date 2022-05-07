@@ -46,7 +46,7 @@ export const Pagination = ({ users, setCurrentUsers, handleMultipleDelete }) => 
 
             <span className="inactive" onClick={() => setPage(pageNumbers[pageNumbers.length - 1])}> <AiOutlineDoubleRight /> </span>
 
-            <span> <button id="multiple_delete_btn" onClick={handleMultipleDelete}> Delete Selected </button> </span>
+            {/* <span> <button id="multiple_delete_btn" onClick={handleMultipleDelete}> Delete Selected </button> </span> */}
         </div>
     )
 }

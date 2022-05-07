@@ -72,7 +72,7 @@ export const Dashboard = () => {
         <div id="body">
             <div>
                 <h1>
-                    GEEKTRUST Admin Dashboard
+                    Admin Dashboard
                 </h1>
             </div>
 
